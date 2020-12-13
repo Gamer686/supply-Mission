@@ -14,7 +14,12 @@ function preload()
 
 function setup() {
 	createCanvas(800, 700);
+	engine = Engine.create();
+	world = engine.world;
+
 	rectMode(CENTER);
+
+
 	var packageBodyOptions={
 		isStatic:true,restitution:1.0 
 	}
@@ -24,24 +29,17 @@ function setup() {
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
 	
-	helicopterSprite=createSprite(width/2, 200, 10,10);
+	helicopterSprite=createSprite(width/2, 80, 10,10);
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , packageBodyOptions);
+	packageBody = Bodies.circle(width/2 , 80 , 5 , packageBodyOptions);
 	World.add(world, packageBody);
 
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
 
-
-	engine = Engine.create();
-	world = engine.world;
-
-	
-	
-
-	//Create a Ground
+     //Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
